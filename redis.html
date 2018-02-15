@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+  <div class="container">
+    <h1>Redis Settings</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <form method="POST">
+        <div class="form-group">
+          <label for="redis-url-input">
+            Redis URL
+          </label>
+          {% if config['CACHE_TYPE'] == 'redis' %}
+          <input class="form-control" type="text" name="redis_url" id="redis-url-input" value="{{ config['CACHE_REDIS_URL']}}"> </input>
+          {% else %}
+          <div>Not using redis</div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <button type="submit" id="submit" class="btn btn-md btn-primary btn-outlined float-right">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
