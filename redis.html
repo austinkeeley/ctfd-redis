@@ -15,6 +15,20 @@
         <strong>Redis connection successful!</strong>
       </div>
       Redis URL: <pre>{{ config['CACHE_REDIS_URL']}}</pre>
+      <table class="table" style="width: 100%">
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        {% for key, value in redis_data.items() %}
+        <tr>
+          <td><code>{{key}}</code></td>
+          <td><code>{{value}}</code></td>
+        </tr>
+        {% endfor %}
+      </table>
       {% else %}
       <div class="alert alert-danger">
         <strong>Error:</strong> {{error}}
